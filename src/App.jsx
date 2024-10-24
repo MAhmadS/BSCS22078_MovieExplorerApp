@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -8,10 +8,17 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GlobalContext } from "./context/GlobalContext";
 
 const App = () => {
+  //Search Bar State
+  const [search, setSearch] = useState("");
+
+  useEffect(()=>{
+    console.log("Searched: ", search);
+  },[search]);
+
   return (
     <GlobalContext.Provider value={{}}>
       <BrowserRouter>
-        <Header />
+        <Header setSearch={setSearch} />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/movie/:id" element={<MovieDetailsPage />} />
