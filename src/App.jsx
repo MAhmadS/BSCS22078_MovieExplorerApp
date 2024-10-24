@@ -74,7 +74,15 @@ const App = () => {
   //fav list
   const [favList, setFavList] = useState([]);
   const addToFav = (movie) => {
-    setFavList([...favList, movie]);
+    let alreadyAdded = false;
+    favList.forEach((movieItem) => {
+      if (movieItem.Title === movie.Title) {
+        alreadyAdded = true;
+      }
+    });
+    if (!alreadyAdded) {
+      setFavList([...favList, movie]);
+    }
   };
 
   return (
