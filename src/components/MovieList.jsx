@@ -11,7 +11,7 @@ const MovieList = ({ moviesList, addToFav }) => {
         {moviesList.map((movie, index) => (
           <li className={`${globalContext.darkMode ? " border p-1 border-white": ""}`} key={index}>
             <Link to={`/movie/${movie.Title}`}>
-              <img src="https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_SX300.jpg"/>
+              <img src={movie.Poster} alt={movie.Title}/>
             </Link>
               <div className="font-bold text-2xl">{movie.Title}</div>
               <div>{movie.Genre}</div>

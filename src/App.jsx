@@ -13,30 +13,40 @@ const moviesList = [
     Year: "1931",
     Runtime: "99 min",
     Genre: "Crime, Mystery, Thriller",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_SX300.jpg",
   },
   {
     Title: "2",
     Year: "1931",
     Runtime: "99 min",
     Genre: "Crime, Mystery, Thriller",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_SX300.jpg",
   },
   {
     Title: "3",
     Year: "1931",
     Runtime: "99 min",
     Genre: "Crime, Mystery, Thriller",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_SX300.jpg",
   },
   {
     Title: "4",
     Year: "1931",
     Runtime: "99 min",
     Genre: "Crime, Mystery, Thriller",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_SX300.jpg",
   },
   {
     Title: "5",
     Year: "1931",
     Runtime: "99 min",
     Genre: "Crime, Mystery, Thriller",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_SX300.jpg",
   },
 ];
 const App = () => {
@@ -45,12 +55,17 @@ const App = () => {
 
   useEffect(() => {
     console.log("Searched: ", search);
+    if (search === "") {
+      setMovieList(moviesList);
+    } else {
+      setMovieList(movieList.filter((movie) => movie.Title === search));
+    }
   }, [search]);
 
   //movie List State
   const [movieList, setMovieList] = useState([]);
   useEffect(() => {
-    setMovieList(movieList);
+    setMovieList(moviesList);
   }, []);
 
   //dark mode
@@ -70,10 +85,18 @@ const App = () => {
           <Route
             exact
             path="/"
-            element={<HomePage moviesList={moviesList} addToFav={addToFav} />}
+            element={<HomePage moviesList={movieList} addToFav={addToFav} />}
           />
-          <Route exact path="/movie/:id" element={<MovieDetailsPage />} />
-          <Route exact path="/favourite" element={<FavouritePage favList={favList} />} />
+          <Route
+            exact
+            path="/movie/:title"
+            element={<MovieDetailsPage moviesList={movieList} />}
+          />
+          <Route
+            exact
+            path="/favourite"
+            element={<FavouritePage favList={favList} />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
