@@ -12,12 +12,13 @@ const SearchBar = ({ setSearch }) => {
   };
 
   return (
-    <form onSubmit={searchHandler}>
+    <form className="flex items-center gap-1" onSubmit={searchHandler}>
       <input
+      className="p-0.5 text-black"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <button type="submit">Search</button>
+      <button className="p-0.5 border-white border" type="submit">Search</button>
     </form>
   );
 };

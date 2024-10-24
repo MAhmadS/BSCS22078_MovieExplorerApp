@@ -1,8 +1,9 @@
 import React from 'react'
+import MovieList from '../components/MovieList'
 
-const HomePage = () => {
+const HomePage = ({moviesList, addToFav}) => {
   return (
-    <div>HomePage</div>
+    <MovieList moviesList={moviesList} addToFav={addToFav} />
   )
 }
 

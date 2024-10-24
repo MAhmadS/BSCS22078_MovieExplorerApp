@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'poppins';
+      src: url("/assets/fonts/Poppins-Regular.ttf");
+    }
+  }
+
+body{
+    @apply font-poppins
+}
